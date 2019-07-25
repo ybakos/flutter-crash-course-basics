@@ -6,6 +6,12 @@ void main() {
       appBar: AppBar(
         title: Text("Hello, World!"),
       ),
+      body: Container(
+        decoration: BoxDecoration(
+          color: Colors.red,
+        ),
+        child: Text("One"),
+      ),
     ),
   ));
 } 

@@ -11,25 +11,22 @@ class LocationDetail extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [Container(
-          decoration: BoxDecoration(
-            color: Colors.red,
-          ),
-        child: Text("One"),
-        ),
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.green,
-          ),
-        child: Text("Two"),
-        ),
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.blue,
-          ),
-        child: Text("Three"),
-        ),
-      ]),
+        children: [
+          _section("One", Colors.red),
+          _section("Two", Colors.green),
+          _section("Three", Colors.blue),
+        ]
+      ),
     );
   }
+
+  Widget _section(String title, Color color) {
+    return Container(
+      decoration: BoxDecoration(
+        color: color,
+      ),
+      child: Text(title),
+    );
+  }
+
 }

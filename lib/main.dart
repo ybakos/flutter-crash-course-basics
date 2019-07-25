@@ -7,6 +7,8 @@ void main() {
         title: Text("Hello, World!"),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [Container(
           decoration: BoxDecoration(
             color: Colors.red,

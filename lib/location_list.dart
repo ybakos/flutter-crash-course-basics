@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'location_detail.dart';
 import 'models/location.dart';
 import 'styles.dart';
 
@@ -20,7 +21,12 @@ class LocationList extends StatelessWidget {
           return ListTile(
             contentPadding: EdgeInsets.all(10),
             leading: _itemThumbnail(this.locations[index]),
-            title: _itemTitle(this.locations[index])
+            title: _itemTitle(this.locations[index]),
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) => LocationDetail(this.locations[index])
+              ));
+            }
           );
         }
       )

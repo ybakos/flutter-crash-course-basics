@@ -38,11 +38,14 @@ class LocationDetail extends StatelessWidget {
   }
 
   Widget _sectionTitle(String text) {
-    return Text(text,
-      textAlign: TextAlign.left,
-      style: TextStyle(
-        fontSize: 25,
-        color: Colors.black
+    return Container(
+      padding: EdgeInsets.fromLTRB(25, 25, 25, 10),
+      child: Text(text,
+        textAlign: TextAlign.left,
+        style: TextStyle(
+          fontSize: 25,
+          color: Colors.black
+        )
       )
     );
   }

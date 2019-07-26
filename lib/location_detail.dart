@@ -43,6 +43,7 @@ class LocationDetail extends StatelessWidget {
 
   Widget _bannerImage(String url, double height) {
     return Container(
+      constraints: BoxConstraints.tightFor(height: height),
       child: Image.network(url, fit: BoxFit.fitWidth)
     );
   }

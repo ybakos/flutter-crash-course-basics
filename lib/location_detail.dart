@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'models/location.dart';
+import 'styles.dart';
 
 class LocationDetail extends StatelessWidget {
 
@@ -42,10 +43,7 @@ class LocationDetail extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(25, 25, 25, 10),
       child: Text(text,
         textAlign: TextAlign.left,
-        style: TextStyle(
-          fontSize: 25,
-          color: Colors.black
-        )
+        style: Styles.headerLarge
       )
     );
   }

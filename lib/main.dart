@@ -5,11 +5,11 @@ import 'mocks/mock_location.dart';
 
 void main() {
 
-  final Location mockLocation = MockLocation.fetchAny();
+  final List<Location> mockLocations = MockLocation.fetchAll();
 
   return runApp(
     MaterialApp(
-      home: LocationList([])
+      home: LocationList(mockLocations)
     )
   );
 }

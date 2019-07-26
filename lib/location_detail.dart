@@ -50,15 +50,18 @@ class LocationDetail extends StatelessWidget {
     );
   }
 
+  Widget _sectionText(String text) {
+    return Container(
+      padding: EdgeInsets.fromLTRB(25, 15, 25, 15),
+      child: Text(text)
+    );
+  }
+
   Widget _bannerImage(String url, double height) {
     return Container(
       constraints: BoxConstraints.tightFor(height: height),
       child: Image.network(url, fit: BoxFit.fitWidth)
     );
-  }
-
-  Widget _sectionText(String text) {
-    return Text(text);
   }
 
 }

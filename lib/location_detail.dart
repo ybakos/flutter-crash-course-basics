@@ -38,7 +38,13 @@ class LocationDetail extends StatelessWidget {
   }
 
   Widget _sectionTitle(String text) {
-    return Text(text);
+    return Text(text,
+      textAlign: TextAlign.left,
+      style: TextStyle(
+        fontSize: 25,
+        color: Colors.black
+      )
+    );
   }
 
   Widget _bannerImage(String url, double height) {

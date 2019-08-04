@@ -28,15 +28,15 @@ void main() {
     expect(location.facts[0].text, equals(locationMap['facts'][0]['text']));
   });
 
-  test('/locations and /locations/:id', () async {
-    final locations = await Location.fetchAll();
-    for (var location in locations) {
-      expect(location.name, hasLength(greaterThan(0)));
-      expect(location.url, hasLength(greaterThan(0)));
-      final fetchedLocation = await Location.fetchById(location.id);
-      expect(fetchedLocation.name, equals(location.name));
-      expect(fetchedLocation.url, equals(location.url));
-    }
-  });
+  // test('/locations and /locations/:id', () async {
+  //   final locations = await Location.fetchAll();
+  //   for (var location in locations) {
+  //     expect(location.name, hasLength(greaterThan(0)));
+  //     expect(location.url, hasLength(greaterThan(0)));
+  //     final fetchedLocation = await Location.fetchById(location.id);
+  //     expect(fetchedLocation.name, equals(location.name));
+  //     expect(fetchedLocation.url, equals(location.url));
+  //   }
+  // });
 
 }

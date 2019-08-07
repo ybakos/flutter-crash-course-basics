@@ -1,5 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'location_fact.dart';
 
 part 'location_fact.g.dart';
 

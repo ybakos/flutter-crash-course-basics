@@ -25,9 +25,20 @@ class _LocationListState extends State<LocationList> {
       appBar: AppBar(
         title: Text('Locations', style: Styles.navBarTitle),
       ),
-      body: ListView.builder(
-        itemCount: this.locations.length,
-        itemBuilder: _listViewItemBuilder
+      body:
+        Column(
+          children: [
+            LinearProgressIndicator(
+              value: null,
+              backgroundColor: Colors.white,
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.grey)
+            ),
+            Expanded(child: ListView.builder(
+              itemCount: this.locations.length,
+              itemBuilder: _listViewItemBuilder
+            )
+          )
+        ]
       )
     );
   }

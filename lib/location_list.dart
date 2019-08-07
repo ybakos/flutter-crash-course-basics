@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'location_detail.dart';
 import 'models/location.dart';
@@ -38,10 +39,12 @@ class _LocationListState extends State<LocationList> {
   loadData() async {
     if (this.mounted) {
       setState(() => this.loading = true);
-      final locations = await Location.fetchAll();
-      setState( () {
-        this.locations = locations;
-        this.loading = false;
+      Timer(Duration(milliseconds: 5000), () async {
+        final locations = await Location.fetchAll();
+        setState( () {
+          this.locations = locations;
+          this.loading = false;
+        });
       });
     }
   }

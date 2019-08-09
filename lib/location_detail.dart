@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'components/location_tile.dart';
 import 'models/location.dart';
 import 'styles.dart';
+
+const bannerImageHeight = 300.0;
+const bodyVerticalPadding = 20.0;
 
 class LocationDetail extends StatefulWidget {
 
@@ -53,9 +57,17 @@ class _LocationDetailState extends State<LocationDetail>{
 
   List<Widget> _renderBody(BuildContext context, Location location) {
     var result = List<Widget>();
-    result.add(_bannerImage(location.url, 200));
+    result.add(_bannerImage(location.url, bannerImageHeight));
+    result.add(_renderHeader());
     result.addAll(_renderFacts(context, location));
     return result;
+  }
+
+  Widget _renderHeader() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: bodyVerticalPadding, horizontal: Styles.horizontalPaddingDefault),
+      child: LocationTile(location: this.location, darkTheme: false)
+    );
   }
 
   List<Widget> _renderFacts(BuildContext context, Location location) {

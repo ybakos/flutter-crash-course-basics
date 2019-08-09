@@ -1,3 +1,4 @@
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 import 'components/location_tile.dart';
 import 'models/location.dart';
@@ -5,6 +6,7 @@ import 'styles.dart';
 
 const bannerImageHeight = 300.0;
 const bodyVerticalPadding = 20.0;
+const footerHeight = 100.0;
 
 class LocationDetail extends StatefulWidget {
 
@@ -45,22 +47,25 @@ class _LocationDetailState extends State<LocationDetail>{
       appBar: AppBar(
         title: Text(this.location.name, style: Styles.navBarTitle),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: _renderBody(context, this.location)
-        )
-      )
+      body: Stack(children: [
+        _renderBody(context, this.location),
+        _renderFooter(context, location)
+      ])
     );
   }
 
-  List<Widget> _renderBody(BuildContext context, Location location) {
+  Widget _renderBody(BuildContext context, Location location) {
     var result = List<Widget>();
     result.add(_bannerImage(location.url, bannerImageHeight));
     result.add(_renderHeader());
     result.addAll(_renderFacts(context, location));
-    return result;
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: result
+      )
+    );
   }
 
   Widget _renderHeader() {
@@ -91,6 +96,41 @@ class _LocationDetailState extends State<LocationDetail>{
       padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: Styles.horizontalPaddingDefault),
       child: Text(text, style: Styles.textDefault)
     );
+  }
+
+  Widget _renderFooter(BuildContext context, Location location) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Container(
+          decoration: BoxDecoration(color: Colors.white.withOpacity(0.5)),
+          height: footerHeight,
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+            child: _renderBookButton()
+          )
+        )
+      ],
+    );
+  }
+
+  Widget _renderBookButton() {
+    return FlatButton(
+      color: Styles.accentColor,
+      textColor: Styles.textColorBright,
+      onPressed: _handleBookPress,
+      child: Text('Book'.toUpperCase(), style: Styles.textCTAButton)
+    );
+  }
+
+  void _handleBookPress() async {
+    const url = 'mailto:hello@tourism.co?subject=inquiry';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
   Widget _bannerImage(String url, double height) {

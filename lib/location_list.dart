@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'location_detail.dart';
+import 'components/location_tile.dart';
 import 'models/location.dart';
+import 'location_detail.dart';
 import 'styles.dart';
 
 const listItemHeight = 245.0;
@@ -101,10 +102,11 @@ class _LocationListState extends State<LocationList> {
   }
 
   Widget _tileFooter(Location location) {
+    final info = LocationTile(location: location, darkTheme: true);
     final overlay = Container(
-      height: 80,
       padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: Styles.horizontalPaddingDefault),
       decoration: BoxDecoration(color: Colors.black.withOpacity(0.5)),
+      child: info
     );
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,

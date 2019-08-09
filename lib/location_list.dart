@@ -69,14 +69,17 @@ class _LocationListState extends State<LocationList> {
 
   Widget _listViewItemBuilder(BuildContext context, int index) {
     final location = this.locations[index];
-    return Container(
-      height: listItemHeight,
-      child: Stack(
-        children: [
-           _tileImage(location.url, MediaQuery.of(context).size.width, listItemHeight),
-           _tileFooter(location)
-        ]
-      )
+    return GestureDetector(
+      onTap: () => _navigateToLocationDetail(context, location.id),
+      child: Container(
+        height: listItemHeight,
+        child: Stack(
+          children: [
+            _tileImage(location.url, MediaQuery.of(context).size.width, listItemHeight),
+            _tileFooter(location)
+          ]
+        )
+      ),
     );
   }
 

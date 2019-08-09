@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'components/location_tile.dart';
+import 'components/banner_image.dart';
 import 'components/default_app_bar.dart';
+import 'components/location_tile.dart';
 import 'models/location.dart';
 import 'location_detail.dart';
 import 'styles.dart';
@@ -74,7 +75,7 @@ class _LocationListState extends State<LocationList> {
         height: listItemHeight,
         child: Stack(
           children: [
-            _tileImage(location.url, MediaQuery.of(context).size.width, listItemHeight),
+            BannerImage(url: location.url, height: listItemHeight),
             _tileFooter(location)
           ]
         )
@@ -87,19 +88,6 @@ class _LocationListState extends State<LocationList> {
       context, MaterialPageRoute(
         builder: (context) => LocationDetail(locationId)
       )
-    );
-  }
-
-  Widget _tileImage(String url, double width, double height) {
-    Image image;
-    try {
-      image = Image.network(url, fit: BoxFit.cover);
-    } catch (e) {
-      print('Could not load image $url');
-    }
-    return Container(
-      constraints: BoxConstraints.expand(),
-      child: image
     );
   }
 
@@ -117,7 +105,4 @@ class _LocationListState extends State<LocationList> {
     );
   }
 
-  Widget _itemTitle(Location location) {
-    return Text('${location.name}', style: Styles.textDefault);
-  }
 }

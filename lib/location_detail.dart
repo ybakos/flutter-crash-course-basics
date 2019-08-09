@@ -1,7 +1,8 @@
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
-import 'components/location_tile.dart';
+import 'components/banner_image.dart';
 import 'components/default_app_bar.dart';
+import 'components/location_tile.dart';
 import 'models/location.dart';
 import 'styles.dart';
 
@@ -55,7 +56,7 @@ class _LocationDetailState extends State<LocationDetail>{
 
   Widget _renderBody(BuildContext context, Location location) {
     var result = List<Widget>();
-    result.add(_bannerImage(location.url, bannerImageHeight));
+    result.add(BannerImage(url: location.url, height: bannerImageHeight));
     result.add(_renderHeader());
     result.addAll(_renderFacts(context, location));
     return SingleChildScrollView(
@@ -130,21 +131,6 @@ class _LocationDetailState extends State<LocationDetail>{
     } else {
       throw 'Could not launch $url';
     }
-  }
-
-  Widget _bannerImage(String url, double height) {
-    Image image;
-    try {
-      if (url.isNotEmpty) {
-        image = Image.network(url, fit: BoxFit.fitWidth);
-      }
-    } catch (e) {
-      print('could not load image $url');
-    }
-    return Container(
-      constraints: BoxConstraints.tightFor(height: height),
-      child: image
-    );
   }
 
 }

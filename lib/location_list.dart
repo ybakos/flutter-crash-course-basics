@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'components/location_tile.dart';
+import 'components/default_app_bar.dart';
 import 'models/location.dart';
 import 'location_detail.dart';
 import 'styles.dart';
@@ -26,9 +27,7 @@ class _LocationListState extends State<LocationList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Locations', style: Styles.navBarTitle),
-      ),
+      appBar: DefaultAppBar(),
       body: RefreshIndicator(
         onRefresh: loadData,
         child: Column(

@@ -3,6 +3,8 @@ import 'location_detail.dart';
 import 'models/location.dart';
 import 'styles.dart';
 
+const listItemHeight = 245.0;
+
 class LocationList extends StatefulWidget {
 
   @override
@@ -66,11 +68,9 @@ class _LocationListState extends State<LocationList> {
 
   Widget _listViewItemBuilder(BuildContext context, int index) {
     final location = this.locations[index];
-    return ListTile(
-      contentPadding: EdgeInsets.all(10),
-      leading: _itemThumbnail(location),
-      title: _itemTitle(location),
-      onTap: () => _navigateToLocationDetail(context, location.id)
+    return Container(
+      height: listItemHeight,
+      child: _tileImage(location.url, MediaQuery.of(context).size.width, listItemHeight)
     );
   }
 
@@ -82,10 +82,16 @@ class _LocationListState extends State<LocationList> {
     );
   }
 
-  Widget _itemThumbnail(Location location) {
+  Widget _tileImage(String url, double width, double height) {
+    Image image;
+    try {
+      image = Image.network(url, fit: BoxFit.cover);
+    } catch (e) {
+      print('Could not load image $url');
+    }
     return Container(
-      constraints: BoxConstraints.tightFor(width: 100),
-      child: Image.network(location.url, fit: BoxFit.fitWidth)
+      constraints: BoxConstraints.expand(),
+      child: image
     );
   }
 

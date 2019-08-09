@@ -70,7 +70,12 @@ class _LocationListState extends State<LocationList> {
     final location = this.locations[index];
     return Container(
       height: listItemHeight,
-      child: _tileImage(location.url, MediaQuery.of(context).size.width, listItemHeight)
+      child: Stack(
+        children: [
+           _tileImage(location.url, MediaQuery.of(context).size.width, listItemHeight),
+           _tileFooter(location)
+        ]
+      )
     );
   }
 
@@ -92,6 +97,19 @@ class _LocationListState extends State<LocationList> {
     return Container(
       constraints: BoxConstraints.expand(),
       child: image
+    );
+  }
+
+  Widget _tileFooter(Location location) {
+    final overlay = Container(
+      height: 80,
+      padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: Styles.horizontalPaddingDefault),
+      decoration: BoxDecoration(color: Colors.black.withOpacity(0.5)),
+    );
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [overlay]
     );
   }
 

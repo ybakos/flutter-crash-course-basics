@@ -81,14 +81,14 @@ class _LocationDetailState extends State<LocationDetail>{
 
   Widget _sectionTitle(String text) {
     return Container(
-      padding: EdgeInsets.fromLTRB(25, 25, 25, 10),
-      child: Text(text, textAlign: TextAlign.left, style: Styles.headerLarge)
+      padding: EdgeInsets.fromLTRB(Styles.horizontalPaddingDefault, 25, Styles.horizontalPaddingDefault, 0),
+      child: Text(text.toUpperCase(), textAlign: TextAlign.left, style: Styles.headerLarge)
     );
   }
 
   Widget _sectionText(String text) {
     return Container(
-      padding: EdgeInsets.fromLTRB(25, 15, 25, 15),
+      padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: Styles.horizontalPaddingDefault),
       child: Text(text, style: Styles.textDefault)
     );
   }
